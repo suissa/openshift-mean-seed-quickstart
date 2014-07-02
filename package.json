@@ -10,22 +10,22 @@
   ],
   "author": {
     "name": "OpenShift",
-    "email": "ramr@example.org",
-    "url":  "http://openshift.redhat.com/"
+    "email": "suporte@getupcloud.com",
+    "url":  "http://getupcloud.com/"
   },
-  "homepage": "http://openshift.redhat.com/",
+  "homepage": "http://getupcloud.com/",
   "repository": {
     "type": "git",
-    "url": "https://gitub.com/openshift/crankcase"
+    "url": "https://gitub.com/getupcloud/nodejs-custom-version-openshift"
   },
 
   "engines": {
-    "node": ">= 0.6.0",
-    "npm": ">= 1.0.0"
+    "node": "0.10.29",
+    "npm": "1.4.14"
   },
 
   "dependencies": {
-    "express": "*"
+    "express": "4.4.5"
   },
   "devDependencies": {},
   "bundleDependencies": [],
