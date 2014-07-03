@@ -1,12 +1,18 @@
-#!/bin/env node
+#!/usr/bin/env node
+
+var addr = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+
+///////////////////////////////////////////////////////////////////////////////
+
+/*
+ * Exemplo Express.
+ */
 
 var express = require('express');
 var fs      = require('fs');
 
 var app = express();
-
-
-/* Tratadores de requisicao */
 
 app.get('/env', function(req, res){
   var content = 'Version: ' + process.version + '\n<br/>\n' +
@@ -32,6 +38,38 @@ app.get('/', function(req, res) {
   res.send(fs.readFileSync('./index.html'));
 });
 
+app.listen(port, addr);
+
+console.log("App express em %s:%s", addr, port);
+
+///////////////////////////////////////////////////////////////////////////////
+
+/*
+ * Exemplo WebSocket.
+ *
+ * Para usar, descomente a linha com a dependencia do modulo "ws"
+ * no arquivo package.js e comente o exemplo de express acima.
+ */
+/*
+var ws  = require('ws');
+var wss = new ws.Server({host: addr, port: port});
+
+wss.on('connection', function(ws) {
+  ws.on('message', function(message) {
+    console.log('received: %s', message);
+    ws.send('replay: "' + message + '"');
+  });
+
+  ws.on('close', function(code, message) {
+    console.log('disconnected');
+  });
+});
+
+console.log("WebSocket escutando em ws://%s:%s", addr, port);
+*/
+
+///////////////////////////////////////////////////////////////////////////////
+
 /* Tratadores de sinais */
 
 var terminator = function(sig) {
@@ -51,11 +89,3 @@ process.on('exit', function() { terminator(); });
   process.on(element, function() { terminator(element); });
 });
 
-/* Inicia o servidor */
-
-var addr = process.env.OPENSHIFT_INTERNAL_IP || process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
-var port = process.env.OPENSHIFT_INTERNAL_PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080;
-
-app.listen(port, addr);
-
-console.log("App iniciado em %s:%s", addr, port);
