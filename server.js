@@ -42,6 +42,76 @@ app.listen(port, addr);
 
 console.log("App express em %s:%s", addr, port);
 
+/*
+ * Exemplo Mongoose
+ */
+/*
+var mongoose = require('mongoose');
+
+if (process.env.OPENSHIFT_MONGODB_DB_URL) {
+  var mongodburl = process.env.OPENSHIFT_MONGODB_DB_URL + process.env.OPENSHIFT_APP_NAME;
+} else {
+  var mongodburl = 'mongodb://127.0.0.1/gato';
+}
+
+mongoose.connect(mongodburl);
+
+var db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'connection error:'));
+
+db.once('open', function() {
+  console.log('Conexao aberta com MongoDB: %s', mongodburl);
+
+  // define nosso schema
+  var gatoSchema = mongoose.Schema({
+    name: String
+  });
+
+  // cria metodo "falar" no model
+  gatoSchema.methods.falar = function () {
+    return "Miau nome é " + this.name + '\n';
+  }
+
+  // instancia o model
+  var Gato = mongoose.model('Gato', gatoSchema)
+
+  //
+  // Tratamento de requisicoes
+  //
+
+  // registra um gato
+  // POST /gato/<nome>
+  app.post(/^\/gato\/(\w+)/, function(req, res) {
+    var name = req.params[0];
+    var gato = new Gato({ name: name });
+    gato.save()
+    res.send(gato.falar());
+  });
+
+  // busca um gato
+  // GET /gato/<nome>
+  app.get(/^\/gato\/(\w+)/, function(req, res) {
+    var name = req.params[0];
+    Gato.findOne({name: name}, function (err, gato) {
+      if (err || !gato) {
+        res.status(404).send('404 Cat Not Found\n');
+      } else {
+        res.send(gato.falar());
+      }
+    });
+  });
+
+  // mostra todos os gatos
+  // GET /gatos
+  app.get('/gatos', function(req, res) {
+    Gato.find(function (err, gatos) {
+      res.send(gatos.map(function (g) { return g.name }).join(', ') + '\n');
+    });
+  });
+});
+*/
+
 ///////////////////////////////////////////////////////////////////////////////
 
 /*
