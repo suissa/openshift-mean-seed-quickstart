@@ -43,7 +43,8 @@ app.listen(port, addr);
 console.log("App express em %s:%s", addr, port);
 
 /*
- * Exemplo Mongoose
+ * Exemplo Mongoose.
+ * Referencia: http://mongoosejs.com/docs/index.html
  */
 /*
 var mongoose = require('mongoose');
@@ -116,6 +117,7 @@ db.once('open', function() {
 
 /*
  * Exemplo WebSocket.
+ * Referencia: http://einaros.github.io/ws/
  *
  * Para usar, descomente a linha com a dependencia do modulo "ws"
  * no arquivo package.js e comente o exemplo de express acima.
@@ -136,6 +138,30 @@ wss.on('connection', function(ws) {
 });
 
 console.log("WebSocket escutando em ws://%s:%s", addr, port);
+*/
+
+/*
+  Exemplo WebSocket cliente.
+  Referencia: http://www.html5rocks.com/pt/tutorials/websockets/basics/
+
+  var ws = new WebSocket('ws://' + location.hostname + ':8000');
+
+  ws.onopen = function () {
+    ws.send('Ping'); // Send the message 'Ping' to the server
+  };
+
+  // Loga erros
+  ws.onerror = function (error) {
+    console.log('WebSocket Error ' + error);
+  };
+
+  // Loga mensagem do servidor
+  ws.onmessage = function (e) {
+    console.log('Server: ' + e.data);
+  };
+
+  // Envia mensagem para o servidor
+  ws.send("Alo mundo!");
 */
 
 ///////////////////////////////////////////////////////////////////////////////
