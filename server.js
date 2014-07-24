@@ -22,8 +22,7 @@ app.get('/env', function(req, res){
   for (var i in vars) {
      content += '   ' + vars[i] + ': ' + process.env[vars[i]] + '\n';
   }
-  content += '}\n</pre><br/>\n'
-  res.send(content);
+  content += '}\n</pre><br/>\n';
   res.send('<html>\n' +
            '  <head><title>Node.js Process Env</title></head>\n' +
            '  <body>\n<br/>\n' + content + '</body>\n</html>');
