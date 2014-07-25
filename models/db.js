@@ -2,7 +2,7 @@
 var mongoose = require( 'mongoose' );
 
 // Build the connection string
-var dbURI = 'mongodb://localhost/mean-seed-test';
+var dbURI = process.env.OPENSHIFT_MONGODB_DB_URL || 'mongodb://localhost/mean-seed-test';
 
 // Create the database connection
 mongoose.connect(dbURI);
