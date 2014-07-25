@@ -1,14 +1,16 @@
 #MEAN-Seed
-This is an OpenShift quickstart for MEAN-Seed.
+This is a Getup Cloud OpenShift quickstart for MEAN-Seed.
 
-Forst, you need an account on Getup Cloud. It has a free 750h to try our platform.
+First, you need an account on Getup Cloud. It gives a free 750h to try out the platform.
 Got to [getupcloud.com](http://getupcloud.com/#/sign-up) and register for free.
 
 ##To install
 
 Create your nodejs app:
 
-    rhc app-create nodejs-0.6 mongodb-2.2 --from-code https://github.com/suissa/openshift-mean-seed-quickstart.git
+    rhc app-create mean nodejs-0.6 mongodb-2.2 --from-code https://github.com/suissa/openshift-mean-seed-quickstart.git
+
+That is it! Now go to http://mean-$namespace.getup.io and follow the instructions below.
 
 ##To populate Mongo
     GET /api/beers/populate
