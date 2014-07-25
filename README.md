@@ -1,69 +1,106 @@
-Running a custom/latest Node[.js] version on RedHat's OpenShift PaaS
-====================================================================
-This git repository is a sample Node application along with the
-"orchestration" bits to help you run the latest or a custom version
-of Node on RedHat's OpenShift PaaS.
+#MEAN-Seed
+
+##To install
+
+    npm install
+
+##To run
+
+    npm start
+
+##To populate Mongo
+    GET /api/beers/populate
+
+##A API
+
+> GET /api/beers
+> GET /api/beers/populate
+> GET /api/beers/\_id/:id
+> POST /api/beers/
+> PUT /api/beers/\_id/:id
+> DELETE /api/beers/\_id/:id
 
 
-Selecting a Node version to install/use
----------------------------------------
+MEAN-seed is based in Angular Express Seed, you can see more about below.
 
-To select the version of Node.js that you want to run, just edit or add
-a version to the .openshift/markers/NODEJS_VERSION file.
+# Angular Express Seed
 
-    Example: To install Node.js version 0.9.1, you can run:
-       $ echo -e "0.9.1\n" >> .openshift/markers/NODEJS_VERSION
+Start an awesome app with AngularJS on the front, Express + Node on the back. This project is an
+application skeleton for a typical [AngularJS](http://angularjs.org/) web app for those who want
+to use Node to serve their app.
+
+The seed contains angular libraries, test libraries and a bunch of scripts all preconfigured for
+instant web development gratification. Just clone the repo (or download the zip/tarball) and
+you're ready to develop your application.
+
+The seed app shows how to wire together Angular client-side components with Express on the server.
+It also illustrates writing angular partials/views with the Jade templating library.
+
+_Note: Although Jade supports interpolation, you should be doing that mostly on the client. Mixing
+server and browser templating will convolute your app. Instead, use Jade as a syntactic sugar for
+HTML, and let AngularJS take care of interpolation on the browser side._
+
+## How to use angular-express-seed
+
+Clone the angular-express-seed repository, run `npm install` to grab the dependencies, and start hacking!
+
+### Running the app
+
+Runs like a typical node app:
+
+    node app.js
+
+### Running tests
+
+Coming soon!
+
+### Receiving updates from upstream
+
+Just fetch the changes and merge them into your project with git.
 
 
-The action_hooks in this application will use that NODEJS_VERSION marker
-file to download and extract that Node version if it is available on
-nodejs.org and will automatically set the paths up to use the node/npm
-binaries from that install directory.
+## Directory Layout
+    
+    app.js              --> app config
+    package.json        --> for npm
+    public/             --> all of the files to be used in on the client side
+      css/              --> css files
+        app.css         --> default stylesheet
+      img/              --> image files
+      js/               --> javascript files
+        app.js          --> declare top-level app module
+        controllers.js  --> application controllers
+        directives.js   --> custom angular directives
+        filters.js      --> custom angular filters
+        services.js     --> custom angular services
+        lib/            --> angular and 3rd party JavaScript libraries
+          angular/
+            angular.js            --> the latest angular js
+            angular.min.js        --> the latest minified angular js
+            angular-*.js          --> angular add-on modules
+            version.txt           --> version number
+    routes/
+      api.js            --> route for serving JSON
+      index.js          --> route for serving HTML pages and partials
+    views/
+      index.jade        --> main page for app
+      layout.jade       --> doctype, title, head boilerplate
+      partials/         --> angular view partials (partial jade templates)
+        partial1.jade
+        partial2.jade
 
-     See: .openshift/action_hooks/ for more details.
-
-    Note: The last non-blank line in the .openshift/markers/NODEJS_VERSION
-          file.determines the version it will install.
 
 
-Okay, now onto how can you get a custom Node.js version running
-on OpenShift.
+## Example App
+
+A simple [blog](https://github.com/btford/angular-express-blog) based on this seed.
 
 
-Steps to get a custom Node.js version running on OpenShift
-----------------------------------------------------------
+## Contact
 
-Create an account at http://openshift.redhat.com/
+For more information on AngularJS please check out http://angularjs.org/
+For more on Express and Jade, http://expressjs.com/ and http://jade-lang.com/ are
+your friends.
 
-Create a namespace, if you haven't already do so
-
-    rhc domain create <yournamespace>
-
-Create a nodejs-0.6 application (you can name it anything via -a)
-
-    rhc app create -a palinode  -t nodejs-0.6
-
-Add this `github nodejs-custom-version-openshift` repository
-
-    cd palinode
-    git remote add upstream -m master git://github.com/openshift/nodejs-custom-version-openshift.git
-    git pull -s recursive -X theirs upstream master
-
-Optionally, specify the custom version of Node.js you want to run with
-(Default is v0.8.9).
-If you want to more later version of Node (example v0.9.1), you can change
-to that by just writing it to the end of the NODEJS_VERSION file and
-committing that change.
-
-    echo "0.9.1" >> .openshift/markers/NODEJS_VERSION
-    git commit . -m 'use Node version 0.9.1'
-
-Then push the repo to OpenShift
-
-    git push
-
-That's it, you can now checkout your application at:
-
-    http://palinode-$yournamespace.rhcloud.com
-    ( See env @ http://palinode-$yournamespace.rhcloud.com/env )
-
+## License
+MIT

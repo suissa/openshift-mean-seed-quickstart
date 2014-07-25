@@ -1,5 +1,5 @@
 node_modules
-
 npm-debug.log
-
 *.swp
+node_modules/
+node_modules/*

@@ -1,37 +1,28 @@
 {
-  "name": "OpenShift-Sample-App",
-  "version": "1.0.0",
-  "description": "OpenShift Sample Application",
-  "keywords": [
-    "OpenShift",
-    "Node.js",
-    "application",
-    "openshift"
-  ],
-  "author": {
-    "name": "OpenShift",
-    "email": "suporte@getupcloud.com",
-    "url":  "http://getupcloud.com/"
+  "name": "mean-seed",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node bin/www"
   },
-  "homepage": "http://getupcloud.com/",
-  "repository": {
-    "type": "git",
-    "url": "https://gitub.com/getupcloud/nodejs-custom-version-openshift"
-  },
-
+  "main": "server.js"
   "engines": {
     "node": "0.10.29",
     "npm": "1.4.14"
   },
-
   "dependencies": {
-    "express": "4.4.5",
-    "mongoose": "3.8.12",
-    "ws": "0.4.31"
+    "body-parser": "^1.0.2",
+    "debug": "^1.0.4",
+    "errorhandler": "^1.1.1",
+    "express": "~4.1.1",
+    "jade": "~0.31.2",
+    "method-override": "^1.0.0",
+    "mongoose": "^3.8.13",
+    "morgan": "^1.0.0",
+    "should": "^4.0.4"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "should": "^4.0.4"
+  }
   "bundleDependencies": [],
-
-  "private": true,
-  "main": "server.js"
 }
