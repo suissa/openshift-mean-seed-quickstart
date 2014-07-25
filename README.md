@@ -10,7 +10,7 @@ Create your nodejs app:
 
     rhc app-create mean nodejs-0.6 mongodb-2.2 --from-code https://github.com/suissa/openshift-mean-seed-quickstart.git
 
-That is it! Now go to http://mean-$namespace.getup.io and follow the instructions below.
+That is it! Now go to [http://mean-$namespace.getup.io](#) and follow the instructions below.
 
 ##To populate Mongo
     GET /api/beers/populate
