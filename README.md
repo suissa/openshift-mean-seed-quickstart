@@ -15,14 +15,100 @@ That is it! Now go to [http://mean-$namespace.getup.io](#) and follow the instru
 ##To populate Mongo
     GET /api/beers/populate
 
-##A API
+##To see running
+
+    http://localhost:3000/beers
+
+##The API
 
 > GET /api/beers
+
 > GET /api/beers/populate
+
 > GET /api/beers/\_id/:id
+
 > POST /api/beers/
+
 > PUT /api/beers/\_id/:id
+
 > DELETE /api/beers/\_id/:id
+
+
+#Directory Layout
+    back/
+      bin/
+      config/
+        db.js
+      modules/
+        main/
+        expose/
+        {{entity}}/
+          api/
+            controller.js
+            routes.js
+          views/
+            create.jade
+            edit.jade
+            list.jade
+            remove.jade
+            show.jade
+          controller.js
+          model.js
+          routes.js
+
+    front/
+      bower_components/
+      css/
+      js/
+        lib/
+        modules/
+          {{entity}}/
+            controllers.js
+            services.js
+            directives.js
+            filters.js
+
+
+#Nomenclature
+##AngularJs
+
+###Angularjs - Modules
+Name:
+>{Entity}{Action}Controller
+
+Folder:
+>/public/js/modules/{{entity}}
+
+###Angularjs - Controllers
+Name:
+>{Entity}{Action}Controller
+
+Folder:
+>/public/js/modules/{{entity}}/controllers.js
+
+###Angularjs - Services
+Name:
+>{Entity}{Service|Factory}
+
+Folder:
+>/public/js/modules/{{entity}}/services.js
+
+###Angularjs - Filters
+Name:
+>{Entity}{FilterName}
+
+Folder:
+>/public/js/modules/{{entity}}/services.js
+
+###Angularjs - Directives
+Name:
+>{Entity}{DirectiveName}
+
+Folder:
+>/public/js/modules/{{entity}}/directives.js
+
+
+**Wait for the Atomic Design**
 
 
 MEAN-seed is based in Angular Express Seed, you can see more about below.
@@ -108,3 +194,9 @@ your friends.
 
 ## License
 MIT
+
+
+
+
+
+
